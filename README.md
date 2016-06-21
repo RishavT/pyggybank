@@ -3,7 +3,9 @@
 Symple Python password vault
 
 ## Usage
+```
 ./passwords.py [option] password_key filename
+```
 
 Where:
 * option can be `type` or `add` or `list`
