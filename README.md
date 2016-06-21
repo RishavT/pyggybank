@@ -4,7 +4,7 @@ Symple Python password vault
 
 ## Usage
 ```
-./passwords.py [option] password_key filename
+python passwords.py [option] password_key filename
 ```
 
 Where:
