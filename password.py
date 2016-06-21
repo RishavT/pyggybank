@@ -26,7 +26,9 @@ class PasswordManager(object):
 
     def create_gpg_file(self):
         """Creates a .json file and encrypts it"""
-        pass
+        os.system('touch passwords.json.gpg')
+        self.gpg_file = 'passwords.json.gpg'
+        return
 
     def __init__(self, master_password, gpg_file=None):
         self.master_password = master_password
@@ -125,8 +127,15 @@ def main():
 
     # Read password from terminal
     password = getpass.getpass('Enter Master Password')
+
+    # Re read password if required
+    if not filename:
+        if password != getpass.getpass('Re-enter Master Password'):
+            print "Passwords don't match"
+            return
     pwd_manager = PasswordManager(master_password=password, gpg_file=filename)
     pwd_manager.load_passwords()
+
     if option == 'type':
         print "Typing password in 10 seconds.."
         pwd_manager.type_password(key, 10)
